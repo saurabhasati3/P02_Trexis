@@ -27,7 +27,7 @@ class LoginRepository @Inject constructor(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-   suspend fun login(username: String, password: String): Result<LoggedInUser> {
+    suspend fun login(username: String, password: String): Result<LoggedInUser> {
         // handle login
 
         val result = dataSource.login(username, password)
@@ -41,7 +41,5 @@ class LoginRepository @Inject constructor(val dataSource: LoginDataSource) {
 
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser
-        // If user credentials will be cached in local storage, it is recommended it be encrypted
-        // @see https://developer.android.com/training/articles/keystore
     }
 }

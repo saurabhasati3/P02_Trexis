@@ -23,7 +23,7 @@ class RemoteDataSource @Inject constructor(private val apiEndPoints: ApiEndPoint
         }
     }
 
-    suspend fun fetchTransactions(accountId:Int): Result<ArrayList<Balance>> {
+    suspend fun fetchTransactions(accountId: Int): Result<ArrayList<Balance>> {
 
         val resp = apiEndPoints.fetchTransactions(accountId)
 

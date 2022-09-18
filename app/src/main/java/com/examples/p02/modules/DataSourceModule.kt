@@ -1,7 +1,7 @@
 package com.examples.p02.modules
 
-import com.examples.p02.data.RemoteDataSource
 import com.examples.p02.data.LoginDataSource
+import com.examples.p02.data.RemoteDataSource
 import com.examples.p02.networking.ApiEndPoints
 import dagger.Module
 import dagger.Provides

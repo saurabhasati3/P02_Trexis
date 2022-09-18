@@ -9,8 +9,7 @@ import com.examples.p02.R
 import com.examples.p02.data.LoginRepository
 import com.examples.p02.data.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
-import kotlinx.coroutines.async
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,8 +25,8 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        viewModelScope.launch {
-            val result=loginRepository.login(username, password)
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = loginRepository.login(username, password)
 
             if (result is Result.Success) {
                 _loginResult.value =
@@ -56,7 +55,6 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
             username.isNotBlank()
         }
     }
-
 
 
     // A placeholder password validation check

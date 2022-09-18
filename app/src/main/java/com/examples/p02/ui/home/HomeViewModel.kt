@@ -8,6 +8,7 @@ import com.examples.p02.data.RemoteDataSource
 import com.examples.p02.data.Result
 import com.examples.p02.data.model.Account
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,7 +28,7 @@ class HomeViewModel @Inject constructor(private val accountsRepo: RemoteDataSour
     }
 
     private fun fetchAccounts() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val result = accountsRepo.fetchAccountsList()
             if (result is Result.Success) {
                 _accounts.postValue(result.data)

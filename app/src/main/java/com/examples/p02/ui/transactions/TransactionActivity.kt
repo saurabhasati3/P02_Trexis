@@ -2,7 +2,6 @@ package com.examples.p02.transactions
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

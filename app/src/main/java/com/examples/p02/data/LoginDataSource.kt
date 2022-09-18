@@ -13,15 +13,20 @@ class LoginDataSource @Inject constructor(private val apiEndPoints: ApiEndPoints
 
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
 
-        val resp = apiEndPoints.login(username, password)
+        val result: Result<LoggedInUser> = try {
+            val resp = apiEndPoints.login(username, password)
 
-        return if (resp.isSuccessful) {
-            val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Morty")
-            Result.Success(fakeUser)
-        } else {
-            Result.Error(IOException("Error logging in", null))
+            if (resp.isSuccessful) {
+                val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Morty")
+                Result.Success(fakeUser)
+            } else {
+                Result.Error(IOException("Error logging in", null))
+            }
+        } catch (e: Exception) {
+            Result.Error(e)
         }
 
+        return result
     }
 
     fun logout() {

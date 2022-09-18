@@ -8,7 +8,10 @@ import retrofit2.http.*
 interface ApiEndPoints {
     @FormUrlEncoded
     @POST("/login")
-    suspend fun login(@Field("username")  name:String , @Field("password")  passwd:String ): Response<Void>
+    suspend fun login(
+        @Field("username") name: String,
+        @Field("password") passwd: String
+    ): Response<Void>
 
 
     @GET("/accounts")
@@ -16,6 +19,6 @@ interface ApiEndPoints {
 
 
     @GET("/transactions")
-    suspend fun fetchTransactions(@Query("accountId") accountId:Int): Response<ArrayList<Balance>>
+    suspend fun fetchTransactions(@Query("accountId") accountId: Int): Response<ArrayList<Balance>>
 
 }
