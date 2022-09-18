@@ -2,15 +2,15 @@
 
 Contains:
 
-Login Screen
-Accounts list screen (with 3 fragments supported by bottom navigation bar)
-Transactions screen
-
+Login Screen,
+Accounts list screen (with 3 fragments supported by bottom navigation bar),
+Transactions screen.
+\n
 Uses:
-Hilt for dependency injection
-Completely written in kotlin, coroutines
-Architecture configuration MVVM
-Retrofit for networking
+Hilt for dependency injection,
+Completely written in kotlin, coroutines,
+Architecture configuration MVVM,
+Retrofit for networking,
 
 /**/
 The adapters are delibrately separated considering the changes needs to be done as per clients requirements (Came by experience)
