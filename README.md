@@ -5,11 +5,15 @@ Contains:
 Login Screen,
 Accounts list screen (with 3 fragments supported by bottom navigation bar),
 Transactions screen.
-\n
+
+
 Uses:
 Hilt for dependency injection,
+
 Completely written in kotlin, coroutines,
+
 Architecture configuration MVVM,
+
 Retrofit for networking,
 
 /**/
