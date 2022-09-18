@@ -9,6 +9,7 @@ import com.examples.p02.data.model.Balance
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,8 +18,8 @@ class TransactionsViewModel @Inject constructor(private val apiService: RemoteDa
     val _accounts: MutableLiveData<ArrayList<Balance>> = MutableLiveData()
 
     fun fetchAccounts(accountId: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = apiService.fetchTransactions(accountId)
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) { apiService.fetchTransactions(accountId) }
             if (result is Result.Success) {
                 _accounts.postValue(result.data)
             }

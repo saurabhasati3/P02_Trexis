@@ -11,6 +11,7 @@ import com.examples.p02.data.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,8 +26,11 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = loginRepository.login(username, password)
+        viewModelScope.launch() {
+
+            val result = withContext(Dispatchers.IO){
+                loginRepository.login(username, password)
+            }
 
             if (result is Result.Success) {
                 _loginResult.value =
